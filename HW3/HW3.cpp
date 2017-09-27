@@ -4,6 +4,9 @@
 	Homework 3
 
 	Compile with: g++ HW3.cpp -o HW3 -std=c++11
+
+	This file implements and tests a Bubble Sort algorithm which does a left-to-right
+	pass like normal and then also does a right-to-left pass in the same loop.
 */
 
 #include <iostream>
