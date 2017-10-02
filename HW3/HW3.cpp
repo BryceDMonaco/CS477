@@ -97,6 +97,8 @@ void SpecialBubbleSort (int* sentData, int sentLength)
 	int lowerBound = -1; //-1 so that the 0th value is the first looked at
 	int upperBound = sentLength; //This lets it go all the way to the last value
 
+	int comparisons = 0;
+
 	for (int pass = 0; (upperBound - lowerBound) > 2; pass++)
 	{
 		int* focusedValue = sentData + (lowerBound + 1); //start LtR on the left-most unsorted value
@@ -111,6 +113,8 @@ void SpecialBubbleSort (int* sentData, int sentLength)
 				Swap (focusedValue, rightValue);
 
 			}
+
+			comparisons++;
 
 			focusedValue++;
 
@@ -141,6 +145,8 @@ void SpecialBubbleSort (int* sentData, int sentLength)
 
 			}
 
+			comparisons++;
+
 			if (leftValue == sentData) //To prevent out of bounds
 			{
 				break;
@@ -167,6 +173,8 @@ void SpecialBubbleSort (int* sentData, int sentLength)
 	PrintArray (sentData, sentLength);
 	cout << endl;
 
+	cout << comparisons << " Comparisons Made" << endl;
+
 
 }
 
@@ -180,6 +188,8 @@ void SpecialBubbleSort (char* sentData, int sentLength)
 
 	int lowerBound = -1; //-1 so that the 0th value is the first looked at
 	int upperBound = sentLength; //This lets it go all the way to the last value
+
+	int comparisons = 0;
 
 	for (int pass = 0; (upperBound - lowerBound) > 2; pass++)
 	{
@@ -200,6 +210,8 @@ void SpecialBubbleSort (char* sentData, int sentLength)
 				isChange = true;
 
 			}
+
+			comparisons++;
 
 			focusedValue++;
 
@@ -231,6 +243,8 @@ void SpecialBubbleSort (char* sentData, int sentLength)
 				isChange = true;
 
 			}
+
+			comparisons++;
 
 			if (leftValue == sentData) //To prevent out of bounds
 			{
@@ -264,6 +278,8 @@ void SpecialBubbleSort (char* sentData, int sentLength)
 	cout << endl << "Final Form of the Array: \t\t\t";
 	PrintArray (sentData, sentLength);
 	cout << endl;
+
+	cout << comparisons << " Comparisons Made" << endl;
 
 
 }
