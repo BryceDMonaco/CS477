@@ -28,6 +28,7 @@ void PrintArray (char* sentData, int sentLength);
 int main ()
 {
 	int values [] = {6, 5, 2, 8, 3, 1}; //Using the example values
+	//int values[] = {8, 6, 5, 3, 2, 1}; //Worst case testing
 	int valuesLength = 6;
 	int* valuesPtr = values;
 
@@ -84,6 +85,7 @@ int main ()
 
 */
 
+//Int Version
 void SpecialBubbleSort (int* sentData, int sentLength)
 {
 	cout << "Starting Bubble Sort, Array Before Start: \t";
@@ -157,9 +159,11 @@ void SpecialBubbleSort (int* sentData, int sentLength)
 		PrintArray (sentData, sentLength);
 		cout << endl;
 
+		//cout << "UB: " << upperBound << "LB: " << lowerBound << endl;
+
 	}
 
-	cout << "Final Form of the Array: \t\t\t";
+	cout << endl << "Final Form of the Array: \t\t\t";
 	PrintArray (sentData, sentLength);
 	cout << endl;
 
@@ -179,6 +183,9 @@ void SpecialBubbleSort (char* sentData, int sentLength)
 
 	for (int pass = 0; (upperBound - lowerBound) > 2; pass++)
 	{
+		bool isChange = false; 	//used to see if through a pass the array is changed at all because
+								//the array might be sorted even though the bounds have not met
+
 		char* focusedValue = sentData + (lowerBound + 1); //start LtR on the left-most unsorted value
 
 		//Do LtR Pass
@@ -189,6 +196,8 @@ void SpecialBubbleSort (char* sentData, int sentLength)
 			if (*focusedValue > *rightValue)
 			{
 				Swap (focusedValue, rightValue);
+
+				isChange = true;
 
 			}
 
@@ -219,6 +228,8 @@ void SpecialBubbleSort (char* sentData, int sentLength)
 			{
 				Swap (focusedValue, leftValue);
 
+				isChange = true;
+
 			}
 
 			if (leftValue == sentData) //To prevent out of bounds
@@ -239,9 +250,18 @@ void SpecialBubbleSort (char* sentData, int sentLength)
 		PrintArray (sentData, sentLength);
 		cout << endl;
 
+		/* Some debug outputs:
+		cout << "UB: " << upperBound << "LB: " << lowerBound << endl;
+		if (!isChange)
+		{
+			cout << "Note: At this point the array is already sorted, but the bounds have not met." << endl;
+
+		}
+		*/
+
 	}
 
-	cout << "Final Form of the Array: \t\t\t";
+	cout << endl << "Final Form of the Array: \t\t\t";
 	PrintArray (sentData, sentLength);
 	cout << endl;
 
